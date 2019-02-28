@@ -1,0 +1,493 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Problem\_Set\_3\_Markdown},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Problem\_Set\_3\_Markdown}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+\section{1}\label{section}
+
+\subsection{a.}\label{a.}
+
+A cubic function would overfit the traing data and lead us to reject or
+accept the null hypothesis incorrctly. Therefore I would say it is safe
+to assume that a linear model would be preferable than the cubic one as
+it would not overfit the training data.
+
+\subsection{b.}\label{b.}
+
+Since the cubic function overfits and the testing data is loaded with
+errors, you expect to have a lower RSS using linear as opposed to cubic.
+
+\section{2.}\label{section-1}
+
+\section{a.}\label{a.-1}
+
+There are 14 columns/variables in the data set and there are 506
+observations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\KeywordTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## corrplot 0.84 loaded
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help}\NormalTok{(Boston)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{b.}\label{b.-1}
+
+lstat ptratio rm indus
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bostonplot <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(Boston)}
+\KeywordTok{corrplot}\NormalTok{(bostonplot, }\DataTypeTok{method=}\StringTok{'square'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Problem_Set_3_Markdown_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\section{c.}\label{c.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(medv }\OperatorTok{~}\StringTok{ }\NormalTok{lstat }\OperatorTok{+}\StringTok{ }\NormalTok{ptratio }\OperatorTok{+}\StringTok{ }\NormalTok{rm }\OperatorTok{+}\StringTok{ }\NormalTok{indus, }\DataTypeTok{data =}\NormalTok{ Boston)}
+\KeywordTok{summary}\NormalTok{(mod1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = medv ~ lstat + ptratio + rm + indus, data = Boston)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -14.5602  -3.1379  -0.7984   1.7783  29.5739 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 18.614970   3.926680   4.741 2.78e-06 ***
+## lstat       -0.575711   0.047885 -12.023  < 2e-16 ***
+## ptratio     -0.935122   0.120464  -7.763 4.71e-14 ***
+## rm           4.515179   0.426286  10.592  < 2e-16 ***
+## indus        0.007567   0.043594   0.174    0.862    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 5.234 on 501 degrees of freedom
+## Multiple R-squared:  0.6786, Adjusted R-squared:  0.6761 
+## F-statistic: 264.5 on 4 and 501 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\section{d.}\label{d.}
+
+lstat, ptratio, and rm reject the null hypothesis that median value of
+owner-occupied homes are not affected by these variables. The only
+variable that is doesn't reject the null hypothesis is indus because it
+has a high P-Value.
+
+\section{e.}\label{e.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(mod1)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Problem_Set_3_Markdown_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\section{f.}\label{f.}
+
+Yes there is evidence of heteroscadicity on the graphs. There appears to
+be a U shaped curve on 2 of the Fitted Values graphs.
+
+\section{g.}\label{g.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{loggeddata <-}\StringTok{ }\NormalTok{Boston}\OperatorTok{$}\NormalTok{lnmedv <-}\StringTok{ }\KeywordTok{log}\NormalTok{(Boston}\OperatorTok{$}\NormalTok{medv)}
+\NormalTok{lnmedv <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(loggeddata}\OperatorTok{~}\StringTok{ }\NormalTok{lstat }\OperatorTok{+}\StringTok{ }\NormalTok{ptratio }\OperatorTok{+}\StringTok{ }\NormalTok{rm }\OperatorTok{+}\StringTok{ }\NormalTok{indus, }\DataTypeTok{data =}\NormalTok{ Boston)}
+\KeywordTok{summary}\NormalTok{(lnmedv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = loggeddata ~ lstat + ptratio + rm + indus, data = Boston)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.92790 -0.11001 -0.01274  0.10998  0.86993 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  3.535070   0.164366  21.507  < 2e-16 ***
+## lstat       -0.034376   0.002004 -17.150  < 2e-16 ***
+## ptratio     -0.037987   0.005042  -7.533 2.33e-13 ***
+## rm           0.104442   0.017844   5.853 8.73e-09 ***
+## indus       -0.001878   0.001825  -1.029    0.304    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2191 on 501 degrees of freedom
+## Multiple R-squared:  0.7149, Adjusted R-squared:  0.7127 
+## F-statistic: 314.1 on 4 and 501 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\section{h.}\label{h.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(lnmedv)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Problem_Set_3_Markdown_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+Yes there is still some heteroscdastity still prevalent in the data. It
+has been slighly reduced but there still evidence of it in the
+Scale-Location graph
+
+\section{i.}\label{i.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rmSq <-Boston}\OperatorTok{$}\NormalTok{rmSq <-}\StringTok{ }\NormalTok{Boston}\OperatorTok{$}\NormalTok{rm }\OperatorTok{*}\StringTok{ }\NormalTok{Boston}\OperatorTok{$}\NormalTok{rm}
+\NormalTok{medgraph <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lnmedv}\OperatorTok{~}\StringTok{ }\NormalTok{rm }\OperatorTok{+}\StringTok{ }\NormalTok{rmSq }\OperatorTok{+}\StringTok{ }\NormalTok{ptratio, }\DataTypeTok{data =}\NormalTok{ Boston)}
+\KeywordTok{summary}\NormalTok{(medgraph)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lnmedv ~ rm + rmSq + ptratio, data = Boston)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.1430 -0.1217  0.0590  0.1714  1.3125 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  3.855021   0.576644   6.685 6.15e-11 ***
+## rm          -0.222718   0.176997  -1.258  0.20886    
+## rmSq         0.041036   0.013753   2.984  0.00299 ** 
+## ptratio     -0.057533   0.006447  -8.924  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.291 on 502 degrees of freedom
+## Multiple R-squared:  0.4962, Adjusted R-squared:  0.4932 
+## F-statistic: 164.8 on 3 and 502 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\section{j}\label{j}
+
+There is an increase in the housing values after 3 rooms. From 4 rms to
+5 rms there appears to be a very drastic almost exponential increase in
+the predicted median value of the homes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rmData <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{rm =} \DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{, }\DataTypeTok{rmSq =} \DecValTok{1}\OperatorTok{:}\DecValTok{7} \OperatorTok{*}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{, }\DataTypeTok{ptratio =} \KeywordTok{rep}\NormalTok{(}\FloatTok{18.57}\NormalTok{,}\DecValTok{7}\NormalTok{))}
+\KeywordTok{summary}\NormalTok{(rmData)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        rm           rmSq         ptratio     
+##  Min.   :1.0   Min.   : 1.0   Min.   :18.57  
+##  1st Qu.:2.5   1st Qu.: 6.5   1st Qu.:18.57  
+##  Median :4.0   Median :16.0   Median :18.57  
+##  Mean   :4.0   Mean   :20.0   Mean   :18.57  
+##  3rd Qu.:5.5   3rd Qu.:30.5   3rd Qu.:18.57  
+##  Max.   :7.0   Max.   :49.0   Max.   :18.57
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(rmData[, }\DecValTok{1}\NormalTok{], }\KeywordTok{predict}\NormalTok{(medgraph, }\DataTypeTok{newdata =}\NormalTok{ rmData))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Problem_Set_3_Markdown_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\section{3}\label{section-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1861}\NormalTok{)}
+\NormalTok{x1 <-}\StringTok{ }\KeywordTok{runif}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{x2 <-}\StringTok{ }\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{x1 }\OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{0}\NormalTok{, }\FloatTok{0.02}\NormalTok{)}
+\NormalTok{Y <-}\StringTok{ }\DecValTok{1} \OperatorTok{*}\StringTok{ }\NormalTok{x1 }\OperatorTok{+}\StringTok{ }\DecValTok{1} \OperatorTok{*}\StringTok{ }\NormalTok{x2 }\OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{DF <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(Y, x1, x2)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{a.}\label{a.-2}
+
+The data, x1 and x2, appear to have a linear relationship.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(x1,x2)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Problem_Set_3_Markdown_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\section{b.}\label{b.-2}
+
+Yes X1 and X2 are very correlated. They have an r value of .99.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(x1,x2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9975058
+\end{verbatim}
+
+\section{c.}\label{c.-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod2 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Y}\OperatorTok{~}\NormalTok{x1 }\OperatorTok{+}\StringTok{ }\NormalTok{x2, }\DataTypeTok{data =}\NormalTok{ DF)}
+\KeywordTok{summary}\NormalTok{(mod2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Y ~ x1 + x2, data = DF)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.58089 -0.66373 -0.02267  0.62852  2.25911 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)    6.010      9.411   0.639    0.525
+## x1             4.323      4.669   0.926    0.357
+## x2            -2.114      4.687  -0.451    0.653
+## 
+## Residual standard error: 0.9344 on 97 degrees of freedom
+## Multiple R-squared:  0.3202, Adjusted R-squared:  0.3062 
+## F-statistic: 22.84 on 2 and 97 DF,  p-value: 7.422e-09
+\end{verbatim}
+
+x1 = 4.323 x2 = -2.114
+
+\section{d.}\label{d.-1}
+
+The value of the coefficients should be 1 as indiciated on the Y
+equation. Y \textless{}- 1 * x1 + 1 * x2 + rnorm(100). 1 is the clear
+coefficient of x1and x2
+
+\section{e.}\label{e.-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod3 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Y}\OperatorTok{~}\NormalTok{x1, }\DataTypeTok{data =}\NormalTok{  DF)}
+\KeywordTok{summary}\NormalTok{(mod3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Y ~ x1, data = DF)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.67131 -0.62930 -0.04688  0.57545  2.33560 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   1.7672     0.2022   8.742 6.47e-14 ***
+## x1            2.2224     0.3282   6.772 9.46e-10 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9306 on 98 degrees of freedom
+## Multiple R-squared:  0.3188, Adjusted R-squared:  0.3118 
+## F-statistic: 45.86 on 1 and 98 DF,  p-value: 9.46e-10
+\end{verbatim}
+
+\subsection{x1 = 2.22}\label{x1-2.22}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod4 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Y}\OperatorTok{~}\NormalTok{x2, }\DataTypeTok{data =}\NormalTok{ DF)}
+\KeywordTok{summary}\NormalTok{(mod4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Y ~ x2, data = DF)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.76623 -0.61195 -0.04742  0.58785  2.40945 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  -2.6677     0.8484  -3.144   0.0022 ** 
+## x2            2.2150     0.3306   6.701 1.32e-09 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9338 on 98 degrees of freedom
+## Multiple R-squared:  0.3142, Adjusted R-squared:  0.3072 
+## F-statistic:  44.9 on 1 and 98 DF,  p-value: 1.323e-09
+\end{verbatim}
+
+\subsection{x2 = 2.215}\label{x2-2.215}
+
+\section{f.}\label{f.-1}
+
+X1 plotted against Y has has a higher R\^{}2 and a lower a P value
+therefore X1 is my preferred data. There isn't a significant differece
+in the data as both have very similar R\^{}2 I would prefer the one with
+a higher R value and the lowest P value.
+
+
+\end{document}

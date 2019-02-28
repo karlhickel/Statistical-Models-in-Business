@@ -1,0 +1,136 @@
+---
+title: "Problem_Set_3_Markdown"
+output:
+  html_document: default
+  pdf_document: default
+---
+#Karl Hickel
+#Problem Set 3
+#1
+##a.
+A cubic function would overfit the traing data and lead us to reject or accept the null hypothesis incorrctly. Therefore I would say it
+is safe to assume that a linear model would be preferable than the cubic one as it would not overfit the training data. 
+
+##b.
+Since the cubic function overfits and the testing data is loaded with errors, you expect to have a lower RSS using linear as opposed to cubic. 
+
+#2.
+#a.
+There are 14 columns/variables in the data set
+and there are 506 observations.
+```{r}
+library(MASS)
+library(corrplot)
+help(Boston)
+```
+
+#b.
+lstat
+ptratio
+rm
+indus
+
+```{r}
+bostonplot <- cor(Boston)
+corrplot(bostonplot, method='square')
+```
+
+#c.
+```{r}
+mod1 <- lm(medv ~ lstat + ptratio + rm + indus, data = Boston)
+summary(mod1)
+```
+
+#d.
+lstat, ptratio, and rm reject the null hypothesis that median value of owner-occupied homes are not affected by these variables.
+The only variable that is doesn't reject the null hypothesis is indus because it has a high P-Value. 
+
+#e.
+```{r}
+par(mfrow = c(2,2))
+plot(mod1)
+```
+
+#f.
+Yes there is evidence of heteroscadicity on the graphs. There appears to be a U shaped curve on 2 of the Fitted Values graphs.
+
+#g.
+```{r}
+loggeddata <- Boston$lnmedv <- log(Boston$medv)
+lnmedv <- lm(loggeddata~ lstat + ptratio + rm + indus, data = Boston)
+summary(lnmedv)
+```
+
+#h.
+```{r}
+par(mfrow = c(2,2))
+plot(lnmedv)
+```
+
+Yes there is still some heteroscdastity still prevalent in the data. It has been slighly reduced but there still evidence of it
+in the Scale-Location graph 
+
+#i. 
+```{r}
+rmSq <-Boston$rmSq <- Boston$rm * Boston$rm
+medgraph <- lm(lnmedv~ rm + rmSq + ptratio, data = Boston)
+summary(medgraph)
+```
+
+#j
+There is an increase in the housing values after 3 rooms. From 4 rms to 5 rms there appears to be a very drastic almost exponential increase in the predicted median value of the homes. 
+```{r}
+rmData <- data.frame(rm = 1:7, rmSq = 1:7 * 1:7, ptratio = rep(18.57,7))
+summary(rmData)
+plot(rmData[, 1], predict(medgraph, newdata = rmData))
+```
+
+#3
+```{r}
+set.seed(1861)
+x1 <- runif(100)
+x2 <- 2 + x1 + rnorm(100, 0, 0.02)
+Y <- 1 * x1 + 1 * x2 + rnorm(100)
+DF <- data.frame(Y, x1, x2)
+```
+
+#a.
+The data, x1 and x2, appear to have a linear relationship.
+```{r}
+plot(x1,x2)
+```
+
+#b.
+Yes X1 and X2 are very correlated. They have an r value of .99.  
+```{r}
+cor(x1,x2)
+```
+
+#c.
+```{r}
+mod2 <- lm(Y~x1 + x2, data = DF)
+summary(mod2)
+```
+
+x1 = 4.323
+x2 = -2.114
+
+#d.
+The value of the coefficients should be 1 as indiciated on the Y equation. 
+Y <- 1 * x1 + 1 * x2 + rnorm(100). 1 is the clear coefficient of x1and x2
+
+#e.
+```{r}
+mod3 <- lm(Y~x1, data =  DF)
+summary(mod3)
+```
+##x1 = 2.22
+```{r}
+mod4 <- lm(Y~x2, data = DF)
+summary(mod4)
+```
+##x2 = 2.215
+
+#f.
+X1 plotted against Y has has a higher R^2 and a lower a P value therefore X1 is my preferred data. There isn't a significant differece in the data as both have very similar R^2 I would prefer the one  with a  higher  R value  and  the lowest P value.
+
